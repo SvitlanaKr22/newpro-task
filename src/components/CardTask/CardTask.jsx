@@ -1,50 +1,50 @@
-import { Card, CardContent, CardActions } from "@mui/material";
-import { Button, Box, Typography } from "@mui/material";
-import sprite from "../../images/sprite.svg";
-import EllipsisText from "react-ellipsis-text";
-import { useState, useEffect } from "react";
-import Modal from "../Modals/Modal";
-import EditCard from "../Modals/EditCard/EditCard";
-import { useDispatch } from "react-redux";
-import { editCard, deleteCard } from "../../redux/cards/operations";
-import dayjs from "dayjs";
-import PopoverCard from "./PopoverCard";
+import { Card, CardContent, CardActions } from '@mui/material';
+import { Button, Box, Typography } from '@mui/material';
+import sprite from '../../images/sprite.svg';
+import EllipsisText from 'react-ellipsis-text';
+import { useState, useEffect } from 'react';
+import Modal from '../Modals/Modal';
+import EditCard from '../Modals/EditCard/EditCard';
+import { useDispatch } from 'react-redux';
+import { editCard, deleteCard } from '../../redux/cards/operations';
+import dayjs from 'dayjs';
+//import PopoverCard from "./PopoverCard";
 
-const line = (color) => (
+const line = color => (
   <Box
     sx={{
-      width: "100%",
-      height: "1px",
-      mx: "2px",
+      width: '100%',
+      height: '1px',
+      mx: '2px',
       backgroundColor: `${color}`,
     }}
   ></Box>
 );
 
-const bull = (color) => (
+const bull = color => (
   <Box
     sx={{
-      width: "12px",
-      height: "12px",
-      borderRadius: "50%",
-      transform: "scale(0.8)",
+      width: '12px',
+      height: '12px',
+      borderRadius: '50%',
+      transform: 'scale(0.8)',
       backgroundColor: `${color}`,
     }}
   ></Box>
 );
 
-const priorityColor = (priority) => {
+const priorityColor = priority => {
   switch (priority) {
-    case "low":
-      return "var(--lowColor)";
-    case "medium":
-      return "var(--mediumColor)";
-    case "high":
-      return "var(--highColor)";
-    case "without":
-      return "var(--withoutColor)";
+    case 'low':
+      return 'var(--lowColor)';
+    case 'medium':
+      return 'var(--mediumColor)';
+    case 'high':
+      return 'var(--highColor)';
+    case 'without':
+      return 'var(--withoutColor)';
     default:
-      return "var(--withoutColor)";
+      return 'var(--withoutColor)';
   }
 };
 
@@ -65,19 +65,19 @@ export default function CardTask({ card }) {
 
   const handleDeleteCard = () => dispatch(deleteCard(id));
 
-  const onSaveEdit = (values) => {
+  const onSaveEdit = values => {
     dispatch(editCard({ id, ...values }));
   };
 
   useEffect(() => {
-    const today = dayjs().format("MM/DD/YYYY");
-    const dedlineDay = `${dayjs(deadline).format("MM/DD/YYYY")}`;
+    const today = dayjs().format('MM/DD/YYYY');
+    const dedlineDay = `${dayjs(deadline).format('MM/DD/YYYY')}`;
     if (today === dedlineDay) setShowRemDedline(true);
   }, [deadline]);
   //--------------------------------------------------------------------
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -91,24 +91,24 @@ export default function CardTask({ card }) {
       sx={{
         maxWidth: 335,
         height: 154,
-        ml: "auto",
-        mr: "auto",
-        mb: "5px",
-        backgroundColor: "var(--sidebarColor)",
+        ml: 'auto',
+        mr: 'auto',
+        mb: '5px',
+        backgroundColor: 'var(--sidebarColor)',
         borderRadius: 2,
 
-        borderLeftWidth: "4px",
+        borderLeftWidth: '4px',
         borderLeftColor: priorityColor(priority),
       }}
     >
-      <CardContent sx={{ fontFamily: "Poppins" }}>
+      <CardContent sx={{ fontFamily: 'Poppins' }}>
         <Typography
           variant="h2"
           sx={{
-            color: "var(--filterModalTitle)",
+            color: 'var(--filterModalTitle)',
             fontSize: 14,
             fontWeight: 700,
-            fontFamily: "inherit",
+            fontFamily: 'inherit',
           }}
           gutterBottom
         >
@@ -116,12 +116,12 @@ export default function CardTask({ card }) {
         </Typography>
         <Typography
           sx={{
-            mt: "8px",
-            mb: "14px",
-            color: "var(--opacityWhite2)",
+            mt: '8px',
+            mb: '14px',
+            color: 'var(--opacityWhite2)',
             fontSize: 12,
-            fontWeight: "400",
-            fontFamily: "Poppins",
+            fontWeight: '400',
+            fontFamily: 'Poppins',
           }}
           gutterBottom
         >
@@ -134,22 +134,22 @@ export default function CardTask({ card }) {
           />
         </Typography>
 
-        {line("var(--opacityWhite2)")}
+        {line('var(--opacityWhite2)')}
 
         <Box
           sx={{
-            fontFamily: "Poppins",
-            display: "flex",
-            justifyContent: "start",
-            alignItems: "center",
-            gap: "30px",
-            mt: "10px",
+            fontFamily: 'Poppins',
+            display: 'flex',
+            justifyContent: 'start',
+            alignItems: 'center',
+            gap: '30px',
+            mt: '10px',
           }}
         >
           <Typography
             sx={{
-              color: "var(--opacityWhite2)",
-              fontFamily: "inherit",
+              color: 'var(--opacityWhite2)',
+              fontFamily: 'inherit',
               fontSize: 8,
               lineHeight: 1.5,
             }}
@@ -158,9 +158,9 @@ export default function CardTask({ card }) {
           </Typography>
           <Typography
             sx={{
-              color: "var(--opacityWhite2)",
+              color: 'var(--opacityWhite2)',
               fontSize: 8,
-              fontFamily: "inherit",
+              fontFamily: 'inherit',
               lineHeight: 1.5,
             }}
           >
@@ -170,63 +170,63 @@ export default function CardTask({ card }) {
 
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "10px",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: '10px',
           }}
         >
           <Box
             sx={{
-              fontFamily: "Poppins",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "14px",
+              fontFamily: 'Poppins',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: '14px',
             }}
           >
             <Box>
               <Box
                 sx={{
-                  display: "flex",
-                  justifyContent: "space-between ",
-                  alignItems: "center",
-                  gap: "4px",
-                  mt: "4px",
+                  display: 'flex',
+                  justifyContent: 'space-between ',
+                  alignItems: 'center',
+                  gap: '4px',
+                  mt: '4px',
                 }}
               >
                 {bull(priorityColor(priority))}
                 <Box
                   sx={{
-                    color: "var(--filterModalText)",
+                    color: 'var(--filterModalText)',
                     fontSize: 10,
-                    fontFamily: "inherit",
+                    fontFamily: 'inherit',
                     lineHeight: 1.5,
                   }}
                 >
-                  {priority === "without priority" ? "without" : priority}
+                  {priority === 'without priority' ? 'without' : priority}
                 </Box>
               </Box>
             </Box>
             <Box>
               <Typography
                 sx={{
-                  color: "var(--filterModalText)",
+                  color: 'var(--filterModalText)',
                   fontSize: 10,
-                  fontFamily: "inherit",
+                  fontFamily: 'inherit',
                   lineHeight: 1.5,
-                  mt: "4px",
+                  mt: '4px',
                 }}
               >
-                {`${dayjs(deadline).format("MM/DD/YYYY")}`}
+                {`${dayjs(deadline).format('MM/DD/YYYY')}`}
               </Typography>
             </Box>
           </Box>
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}
           >
             {showRemDedline && (
@@ -236,9 +236,9 @@ export default function CardTask({ card }) {
                 fill="none"
                 stroke="var(--filterModalText)"
                 style={{
-                  boxShadow: " 0 0 6px 4px  #bedbb0",
-                  borderRadius: "50%",
-                  marginRight: "8px",
+                  boxShadow: ' 0 0 6px 4px  #bedbb0',
+                  borderRadius: '50%',
+                  marginRight: '8px',
                 }}
               >
                 <use href={sprite + `#icon-Icon-bell`}></use>
@@ -248,7 +248,7 @@ export default function CardTask({ card }) {
             <CardActions sx={{ pt: 0, pb: 0, pr: 0 }}>
               <Button
                 onClick={handleClick}
-                sx={{ minWidth: "18px", borderRadius: "50%" }}
+                sx={{ minWidth: '18px', borderRadius: '50%' }}
               >
                 <svg
                   width="20"
@@ -260,11 +260,11 @@ export default function CardTask({ card }) {
                 </svg>
               </Button>
 
-              <PopoverCard anchorEl={anchorEl} onClose={handleClose} />
+              {/* <PopoverCard anchorEl={anchorEl} onClose={handleClose} /> */}
 
               <Button
                 size="small"
-                sx={{ minWidth: "18px", borderRadius: "50%" }}
+                sx={{ minWidth: '18px', borderRadius: '50%' }}
                 onClick={openModal}
               >
                 <svg
@@ -289,7 +289,7 @@ export default function CardTask({ card }) {
               )}
               <Button
                 size="small"
-                sx={{ minWidth: "18px", borderRadius: "50%" }}
+                sx={{ minWidth: '18px', borderRadius: '50%' }}
                 onClick={handleDeleteCard}
               >
                 <svg
