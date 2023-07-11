@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <PersistGate persistor={persistor} loading={null}>
       {/* <BrowserRouter basename="/project-MyErrand08"> */}
-      <BrowserRouter>
+      <BrowserRouter basename="/newpro-task">
         <App />
       </BrowserRouter>
     </PersistGate>
